@@ -99,7 +99,7 @@ function App() {
             ) : userData !== null ? (
               <DivCard>
               <Image>
-                <img src={userData.avatar_url} alt={userData?.name}/>
+                <img src={typeof userData?.avatar_url === 'string' ? userData.avatar_url : 'fallback-image-url'} alt={userData?.name}/>
               </Image>
               <Informations>
                 <CardHeader>
