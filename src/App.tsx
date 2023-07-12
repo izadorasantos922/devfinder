@@ -10,7 +10,7 @@ import ImageLoading from '../src/assets/loader-primary.svg'
 import './App.css';
 
 interface UserData {
-  avatar_url: StaticRangeInit;
+  avatar_url: string;
   name: string;
   created_at: string;
   email: string | null;
@@ -99,12 +99,12 @@ function App() {
             ) : userData !== null ? (
               <DivCard>
               <Image>
-                <img src={typeof userData?.avatar_url === 'string' ? userData.avatar_url : 'fallback-image-url'} alt={userData?.name}/>
+                <img src={userData.avatar_url} alt={userData.name}/>
               </Image>
               <Informations>
                 <CardHeader>
                   <h1>{userData.name}</h1>
-                  <p>Joined {formatCreatedAtDate(userData?.created_at)}</p>
+                  <p>Joined {formatCreatedAtDate(userData.created_at)}</p>
                 </CardHeader>
                 <Bio>
                 {userData.email !== null ? (
