@@ -99,6 +99,11 @@ export const Card = styled.div`
     animation: ${spinAnimation} 0.5s linear infinite;
 }
 `
+export const Imageloading = styled.div`
+ display: flex;
+ align-items: center;
+ justify-content: center;
+`
 export const DivCard = styled.div`
     display: grid;
  grid-template-columns: repeat(1, 35% 60%);

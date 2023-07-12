@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 interface Props {
-    theme: {
+    theme?: {
         body: string
     }
 }
