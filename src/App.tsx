@@ -3,22 +3,36 @@ import { ligthTheme, darkTheme } from './styles/theme';
 import {BsSun, BsFillMoonFill, BsSearch, BsLink45Deg, BsTwitter, BsFillBuildingsFill} from 'react-icons/bs';
 import {FaLocationDot} from "react-icons/fa6"
 import useThemeState from './hook/useThemeState';
-import { Container, Body,Navbar, Card, Image, Informations, CardHeader, Bio, DivMoreInformations, MoreInformations, DivLocationsAndLinks, LocationsAndLinks, Form, Button, Input, IconMood, IconSearch, DivCard} from './styles/styles';
+import { Container, Body,Navbar, Card, Image, Informations, CardHeader, Bio, DivMoreInformations, MoreInformations, DivLocationsAndLinks, LocationsAndLinks, Form, Button, Input, IconMood, IconSearch, DivCard, Imageloading} from './styles/styles';
 import {ThemeProvider} from 'styled-components';
 import { GlobalStyles } from './styles/GlobalStyles';
 import ImageLoading from '../src/assets/loader-primary.svg'
 import './App.css';
+
+interface UserData {
+  avatar_url: StaticRangeInit;
+  name: string;
+  created_at: string;
+  email: string | null;
+  bio: string | null;
+  public_repos: number;
+  followers: number;
+  following: number;
+  location: string | null;
+  twitter_username: string | null;
+  company: string | null;
+}
 
 function App() {
   const [theme, setTheme] = useThemeState('theme', "light")
   const themeToggler = () =>{
     theme === "light" ? setTheme('dark') : setTheme("light")
   }
-  const [userName, setUsername] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [userData, setUserData] = useState(null)
+  const [userName, setUsername] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [userData, setUserData] = useState<UserData | null>(null)
 
-    const fetchData = async() =>{
+    const fetchData = async(userName: string) =>{
         try {
           setIsLoading(true)
           const res = await fetch(`https://api.github.com/users/${userName}`)
@@ -38,7 +52,7 @@ function App() {
         }
     }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent):void => {
     e.preventDefault()
     fetchData(userName)
     setUsername('')
@@ -67,7 +81,7 @@ function App() {
           ) }
           </Navbar>
           <Form onSubmit={handleSubmit}>
-            <Input type="text" placeholder='Search GitHub username' value={userName} onChange={(e) => setUsername(e.target.value)}>
+            <Input type="text" placeholder='Search GitHub username' value={userName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}>
             </Input>
             <IconSearch>
               <BsSearch/>
@@ -78,7 +92,10 @@ function App() {
           </Form>
           <Card>
             {isLoading ? (
-              <img src={ImageLoading} alt="loading" className='loading-image' />
+              <Imageloading>
+                <img src={ImageLoading} alt="loading" className='loading-image' />
+              </Imageloading>
+              
             ) : userData !== null ? (
               <DivCard>
               <Image>
