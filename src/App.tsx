@@ -6,7 +6,7 @@ import useThemeState from './hook/useThemeState';
 import { Container, Body,Navbar, Card, Image, Informations, CardHeader, Bio, DivMoreInformations, MoreInformations, DivLocationsAndLinks, LocationsAndLinks, Form, Button, Input, IconMood, IconSearch, DivCard, Imageloading} from './styles/styles';
 import {ThemeProvider} from 'styled-components';
 import { GlobalStyles } from './styles/GlobalStyles';
-import ImageLoading from '../src/assets/loader-primary.svg'
+import ImageLoading from '../src/assets/loader-primary.svg';
 import './App.css';
 
 interface UserData {
@@ -20,6 +20,7 @@ interface UserData {
   following: number;
   location: string | null;
   twitter_username: string | null;
+  blog: string | null;
   company: string | null;
 }
 
@@ -48,7 +49,7 @@ function App() {
         } catch (error) {
           setIsLoading(false)
           alert("Erro ao carregar usuário")
-          console.log("Error " + error)
+          console.log(`Error ${error}`)
         }
     }
 
@@ -151,7 +152,11 @@ function App() {
                   </DivLocationsAndLinks>
                   <DivLocationsAndLinks>
                     <BsLink45Deg/>
-                    <a href="https://github.blog">https://github.blog</a>
+                    {userData.blog !== null ? (
+                      <p>{userData.blog}</p>
+                    ) : (
+                      <p>This profile has no blog</p>
+                    )}
                   </DivLocationsAndLinks>
                   <DivLocationsAndLinks>
                     <BsFillBuildingsFill/>
