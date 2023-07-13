@@ -10,9 +10,10 @@ export const Body = styled.div`
     justify-content: center;
 `
 export  const Container = styled.div`
+    word-wrap: break-word;
     margin-top: 4.5rem;
     height: 450px;
-    width: 580px;
+    width: 600px;
     border-radius: 30px;
 `
 export const Navbar = styled.nav`
@@ -153,20 +154,25 @@ export const DivMoreInformations = styled.div`
 export const LocationsAndLinks = styled.div`
     display: grid;
     padding: 0;
-    grid-template-columns: repeat(1, 50% 31%);
+    grid-template-columns: repeat(1, 65% 30%);
     justify-content: space-between;
-
 `
 export const DivLocationsAndLinks = styled.div`
     display: flex;
     align-items: center;
     margin-top: 10px;
     p, a{
+        word-break: break-all;
         margin-left: 8px;
     }
     a{
+        font-size: 17px;
         color: ${props => props.theme.fontColor};
         text-decoration: none;
+    }
+
+    .link-icon{
+        font-size: 30px;
     }
 `
 
