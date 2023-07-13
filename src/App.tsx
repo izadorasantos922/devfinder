@@ -151,9 +151,9 @@ function App() {
                     )}
                   </DivLocationsAndLinks>
                   <DivLocationsAndLinks>
-                    <BsLink45Deg/>
+                    <BsLink45Deg className="link-icon"/>
                     {userData.blog !== null ? (
-                      <p>{userData.blog}</p>
+                      <a href={userData.blog}>{userData.blog}</a>
                     ) : (
                       <p>This profile has no blog</p>
                     )}
