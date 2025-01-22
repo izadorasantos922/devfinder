@@ -33,3 +33,41 @@ DevFinder is a simple web application that allows you to search for GitHub users
 - TypeScript
 - GitHub API
 - CSS
+
+---
+
+# DevFinder
+
+O DevFinder é uma aplicação web simples que permite procurar usuários do GitHub digitando o nome de usuário. Ele busca e exibe os detalhes do usuário, como repositórios, seguidores e mais, diretamente da API do GitHub.
+
+## Instalação
+
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/izadorasantos922/devfinder.git
+    ```
+
+2. Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+3. Execute a aplicação:
+    ```bash
+    npm start
+    ```
+
+4. Acesse o app em `http://localhost:3000`.
+
+## Funcionalidades
+
+- Buscar usuários do GitHub pelo nome de usuário
+- Exibir detalhes do usuário como repositórios e seguidores
+- Construído com TypeScript e React
+
+## Tecnologias Utilizadas
+
+- React
+- TypeScript
+- API do GitHub
+- CSS
